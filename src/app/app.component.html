@@ -1,4 +1,20 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<p>Validation Dirictive</p>
+
+<input
+  matInput
+  placeholder="Password"
+  required
+  [(ngModel)]="password"
+  id="mobile"
+  name="mobile"
+  #mobile="ngModel"
+  mobile-number-validator="mobile"
+/>
+<div *ngIf="mobile.errors">No spaces are allowed.</div>
+
+<span
+  class="invalid-feedback"
+  *ngIf="(mobile.touched || mobile.dirty) && mobile.errors?.message"
+>
+  Phone number must be 10 digits
+</span>
